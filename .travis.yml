@@ -1,8 +1,17 @@
 language: ruby
 rvm:
-  - 2.2.2
+- 2.2.2
 addons:
-  postgresql: "9.4"
+  postgresql: '9.4'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  api_key:
+    secure: JvbqdfShyJ1zQy3Cik13snxMBVQ83P6Z72ynIf7CixW7/tmwkGdPRxPalXhxhvZb9H7UWp6sqsU7QL1I2V5p42eKIgEyrDBbZRSHd3EPUj1et5beOQaq5fAZwvauTvhz8KVgHlRVnvOdisG+5o9BPPjhwfnP4VHoj2s3EW5Glk8Z/N8t+f7tyzc8PuIu2pG0csrL2lnr3Mf/FaHem6xQQQrD6ZgXZ6bBsBD8mW+MhxSr5EVV4Kpm37Vq+vhRA77DyCtLT6c/zVVdKDWz3umQLd3YYkMjW3vElWWlUBSc5EBUIjUqH+RjOueLmJ2q2Qmh7AE85BkSRLCD8/p5X6u0wttETUYIahU/NxisrCuHnuUogQkTuvLESAVdVuHA9ggxgksP0JauYUwDWprmJLj2OX2IKryaQtGeyxyYW9UW/j4XlxDEC/iergLyX+WItcCgKclyjPHQKwPn5EolSC+UNKtgmxcBCBliZhtDD3qGTcA3orYWXrjHWWEU3H0DuoZXGXC+bTpXwvUItjf9t3vebDp7ZUjU4qqJBWk1WdFRbFe9UkOBc0YA01J6HP72YEBlB4JJLGONx5PvA98t01Xg2Xltj772vDUyVDCVXeE5ojsJvw0JiAOen8/ygm11X4NDxAD0zHj6d3VUlDY9fTvX5NBfd2+NbZwtRShjP1ze2Vw=
+  app: iron-reddit-linkathon
+  on:
+    repo: tiy-hou-q3-2015-rails/iron_reddit
+  run:
+    - "rake db:migrate"
