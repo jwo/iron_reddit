@@ -2,8 +2,8 @@
 
 <div class="links">
   <% @links.each do |link| %>
-    <div class="link">
-      <%= link.title %>
+    <div class="link" id="link-<%=link.id%>">
+        <%= link_to "⍐", upvote_link_path(id: link.id), method: :post, class: 'upvote' %> <%= pluralize link.vote_count, 'link' %><%= link.title %>
     </div>
   <% end %>
 </div>

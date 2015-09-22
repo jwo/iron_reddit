@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'links#index'
 
+  post "/links/:id/upvote" => 'links#upvote', as: :upvote_link
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

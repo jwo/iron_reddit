@@ -50,4 +50,6 @@ gem "minitest-rails"
 group :test do
   gem "minitest-rails-capybara"
   gem "minitest-reporters"
+  gem "launchy"
+  gem "pry"
 end
