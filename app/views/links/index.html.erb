@@ -3,7 +3,17 @@
 <div class="links">
   <% @links.each do |link| %>
     <div class="link" id="link-<%=link.id%>">
-        <%= link_to "⍐", upvote_link_path(id: link.id), method: :post, class: 'upvote' %> <%= pluralize link.vote_count, 'link' %><%= link.title %>
+        <div class="voting">
+          <%= link_to  upvote_link_path(id: link.id), method: :post, class: 'upvote' do %>
+            <i class="fa fa-thumbs-up fa-2x"></i>
+          <% end %>
+        </div>
+        <div class="count">
+          <%= pluralize link.vote_count, 'link' %>
+        </div>
+        <div class="details">
+          <%= link.title %>
+        </div>
     </div>
   <% end %>
 </div>
